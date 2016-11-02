@@ -8,7 +8,38 @@ knitr::opts_chunk$set(echo = TRUE)
 library(readstata13)
 ```
 
-## Regression preparetion
+## Part 1: True False Questions
+1, Endogeneity of regressors causes that the OLS coeffecients are biased.
+True.
+Because the estimated coeffecients are not BLUE anymore
+
+2, Dropping an important variable from the set of regressors always creates an omitted variable bias.
+False.
+Omitted variable bias only happens when residuals correlated with explanatory variables.
+If dropped variable doesn???t affect to other explanatory variables, the residuals into which the impact of the dropped variable entered does not also affect to other variables.
+
+3, A high degree of correlation between the explanatory variables causes that the OLS coefficients are biased.
+False.
+Multicollinearity causes to increase of variance of OLS coefficients, but not causes to biasnesss.
+
+4,
+R^2 = Var(y^)/Var(y) = 7.8/10.3 = 0.75728???
+R-squared close to 1. This means that the model explains the data well.
+
+5, Including an irrelevant variables does not lead to biased OLS coefficients.
+True.
+It leads to multicollinearity which cause to increase of variance of OLS coefficients.
+
+6, I reject a Null-hypothesis on a single coefficient, if the absolute value of the t-statistics is larger than the critical value.
+True.
+
+7, An OLS estimator becomes more accurate, the larger the dispersion of the explanatory variables x_it.
+True.
+If the Var(x_it) becomes larger, the Var(B^) will decrease.
+
+
+
+## Part2: Regression preparetion
 
 (a)
 Firstly, We generate the variables that we need for running Cobb-Douglas production function.
@@ -30,8 +61,13 @@ unemp <- cobbdata["unemp"]
 ```
 
 (b)
+Because we have to avoid omitted variable biases.
+If we omit these variables (private capital, employment rate), the residual may significantry correlated with explanatory variable (public capital). That leads to biasness of estimated coeficients.
 
 
 ##Estimating pooled OLS
 
 (a)
+```{r}
+
+```
