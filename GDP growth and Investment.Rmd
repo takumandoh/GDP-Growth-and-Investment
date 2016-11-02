@@ -1,0 +1,37 @@
+---
+title: "GDP growth and investment"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readstata13)
+```
+
+## Regression preparetion
+
+(a)
+Firstly, We generate the variables that we need for running Cobb-Douglas production function.
+
+#1 read CobbDouglas.dta
+```{r}
+cobbdata <- read.dta13("/Users/Takuma/Google Drive/GitHub/GDP-Growth-and-Investment/CobbDouglas.dta")
+```
+
+#2 generate explanatory variables
+```{r}
+class(cobbdata)
+head(cobbdata)
+logY <- log(cobbdata["gsp"])
+logK1 <- log(cobbdata["hwy"] + cobbdata["water"] + cobbdata["util"])
+logK2 <- log(cobbdata["pc"])
+logL <- log(cobbdata["emp"])
+unemp <- cobbdata["unemp"]
+```
+
+(b)
+
+
+##Estimating pooled OLS
+
+(a)
