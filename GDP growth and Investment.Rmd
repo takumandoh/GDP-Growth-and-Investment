@@ -53,21 +53,42 @@ cobbdata <- read.dta13("/Users/Takuma/Google Drive/GitHub/GDP-Growth-and-Investm
 ```{r}
 class(cobbdata)
 head(cobbdata)
-logY <- log(cobbdata["gsp"])
-logK1 <- log(cobbdata["hwy"] + cobbdata["water"] + cobbdata["util"])
-logK2 <- log(cobbdata["pc"])
-logL <- log(cobbdata["emp"])
-unemp <- cobbdata["unemp"]
+logY <- log(cobbdata$gsp)
+logK1 <- log(cobbdata$hwy + cobbdata$water + cobbdata$util)
+logK2 <- log(cobbdata$pc)
+logL <- log(cobbdata$emp)
+unemp <- cobbdata$unemp
+
 ```
 
 (b)
 Because we have to avoid omitted variable biases.
 If we omit these variables (private capital, employment rate), the residual may significantry correlated with explanatory variable (public capital). That leads to biasness of estimated coeficients.
 
-
 ##Estimating pooled OLS
 
 (a)
-```{r}
 
+We estimate the Cobb-Douglas production function below.
+
+```{r}
+regression <- lm(logY ~ logK1 + logK2 + logL + unemp)
+summary(regression)
 ```
+As the summary shows, the result is following
+
+logY = 1.643302 + 0.155007 * logK1 + 0.309190 * logK2 + 0.593925 * logL + -0.006733 * unemp
+
+R-Squared = 0.9926
+Adjusted R-Squared = 0.9926
+
+(b)
+The model fitted the data well, because the Adjusted R-Squared is close to 100%.
+According to the regression, the coefficient of logarismic public capital is 0.155007. That means if public capital changes 10%, growth of production changes 1.55%. I would say publi capital has significant effect on growth of production.
+
+(c)
+
+
+
+
+
