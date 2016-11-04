@@ -95,8 +95,30 @@ Null Hypothesis: B1-B2 = 0
 
 t-statistics = (B1-B2)/(Var(B1-B2))^(1/2)
 
+Var(B1-B2) = Var(B1) + Var(B2) +2*covar(B1,B2)
+
+I need covariance of B1 and B2 to calculate this t-statistics. (see http://www.uv.es/uriel/4%20Hypothesis%20testing%20in%20the%20multiple%20regression%20model.pdf)
+
+```{r}
+vcov(regression)
+```
+
+As shown in the covariance matrices, the covar(B1,B2) eqauls to -8.774564e-05.
+
+```{r}
+B1 <- 0.155007
+B2 <- 0.309190
+varB1 <- 0.017154 
+varB2 <- 0.010272
+vcovB1B2 <- (-1)*8.774564*10^(-5)
+
+standarderror <- varB1 + varB2 +2*vcovB1B2
+
+tstatistics <- (B1-B2)/standarderror*(1/2)
+tstatistics
 
 
 
+```
 
 
