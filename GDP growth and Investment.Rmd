@@ -116,9 +116,7 @@ standarderror <- varB1 + varB2 +2*vcovB1B2
 
 tstatistics <- (B1-B2)/standarderror*(1/2)
 tstatistics
-
-
-
+range(tstatistics)
 ```
 
 
